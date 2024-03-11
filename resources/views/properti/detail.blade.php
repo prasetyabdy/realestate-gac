@@ -1,118 +1,172 @@
 @extends('layouts.layouts')
 
 @section('content')
-<section id="detail" style="margin-top:100px" class="py-5">
-    <div class="container col-xxl-8">
-        <div class="mb-3">
-            Home / Properti / Nama Rumah
-        </div>
-        <img src="{{ asset('storage/foto-rumah/'.$data->foto) }}" class="img-fluid mb-3" alt="">
-        <div class="konten-properti">
-            <h4 class="fw-bold mb-3">{{ $data->namarumah }}</h4>
-            <p class="mb-3 text-secondary">Tipe Rumah :{{ $data->tiperumah }} | Harga {{ $data->hargarumah }}</p>
-            
-            <p>{{ $data->deskripsirumah }}</p>
-            <p>{{ $data->alamatrumah }}</p>
-            
-        </div>
-        <button class="btn btn-primary"> Pesan Sekarang</button>
-        <button class="btn btn-primary">Booking</button>
-        
-        <div>
-            <div class="stripe-hitam mt-5"></div>
-            <h4 class="fw-bold mt-5" style="text-align: center">Form Simulasi KPR</h4>
-            
-            <form action="" method="POST">
-                @csrf
-                <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">Jumlah Kredit</label>
-                    <input type="number" name="" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                    
-                    @error('')
-                    <small style="color: red">{{ $message }}</small>
-                    @enderror
-                </div>
-                <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">Jangka Waktu</label>
-                    <input type="number" name="" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                    
-                    @error('')
-                    <small style="color: red">{{ $message }}</small>
-                    @enderror
-                </div>
-                <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">Bunga Pertahun</label>
-                    <input type="number" name="" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                    
-                    @error('')
-                    <small style="color: red">{{ $message }}</small>
-                    @enderror
-                </div>
-                <div class=" mb-3">
-                    <label class="form-label">Jenis KPR</label>
-                    
-                    <select name="" class="form-control">
-                        <option>--Pilih--</option>
-                        <option value="">Flat</option>
-                        <option value="">Efektif</option>
-                        <option value="">Anuitas</option>
-                    </select>
-                    @error('')
-                    <small style="color: red">{{ $message }}</small>
-                    @enderror
-                </div>
-                <button type="submit" class="btn btn-primary">Hitung</button>
-            </form>
-        </div>
-        
-        <div>
-            <div class="stripe-hitam mt-5"></div>
-            <h4 class="fw-bold mt-5" style="text-align: center">Hasil Simulasi KPR</h4>
-            <div>
-                <p>Total Pinjaman           :</p>
-                <p>Lama Pinjaman            :</p>
-                <p>Bunga Pertahun           :</p>
-                <p>Angsuran Pokok Perbulan  :</p>
-                <p>Angsuran Bunga Perbulan  :</p>
-                <p>Total angsuran Perbulan  :</p>
+    <section id="detail" style="margin-top:100px" class="py-5">
+        <div class="container col-xxl-8">
+            <div class="mb-3">
+                Home / Properti / Nama Rumah
             </div>
+            <img src="{{ asset('storage/foto-rumah/' . $house->foto) }}" class="img-fluid mb-3" alt="">
+            <div class="konten-properti">
+                <h4 class="fw-bold mb-3">{{ $house->namarumah }}</h4>
+                <p class="mb-3 text-secondary">Tipe Rumah :{{ $house->tiperumah }} | Harga {{ $house->hargarumah }}</p>
+
+                <p>{!! $house->deskripsirumah !!}</p>
+                {!! $house->alamatrumah !!}
+
+            </div>
+            <button class="btn btn-primary"> Pesan Sekarang</button>
+            <button class="btn btn-primary">Booking</button>
+
             <div>
-                
-                <table class="table table-bordered table-striped mt-5">
-                    <thead>
-                        <tr>
-                            
-                            <th>Bulan</th>
-                            <th>Pokok</th> 
-                            <th>Bunga</th>
-                            <th>Angsuran</th>
-                            <th>Sisa Pinjaman</th>
-                            
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                    </tbody>
-                    <tfoot>
-                        <tr>
-                            <th>Bulan</th>
-                            <th>Pokok</th> 
-                            <th>Bunga</th>
-                            <th>Angsuran</th>
-                            <th>Sisa Pinjaman</th>
-                        </tr>
-                    </tfoot>
-                </table>
-                
+                <div class="stripe-hitam mt-5"></div>
+                <h4 class="fw-bold mt-5" style="text-align: center">Form Simulasi KPR</h4>
+
+                <form action="" method="GET">
+                    @csrf
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Jumlah Kredit</label>
+                        <input type="number" name="pinjaman" class="form-control" id="exampleInputEmail1"
+                            aria-describedby="emailHelp" value="{{ request()->pinjaman }}">
+
+                        @error('')
+                            <small style="color: red">{{ $message }}</small>
+                        @enderror
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Jangka Waktu (Tahun)</label>
+                        <input type="number" name="jangka_waktu" class="form-control" id="exampleInputEmail1"
+                            aria-describedby="emailHelp" value="{{ request('jangka_waktu') }}">
+
+                        @error('')
+                            <small style="color: red">{{ $message }}</small>
+                        @enderror
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Bunga Pertahun</label>
+                        <input type="double" name="bunga" class="form-control" id="exampleInputEmail1"
+                            aria-describedby="emailHelp" value="{{ request('bunga') }}">
+
+                        @error('')
+                            <small style="color: red">{{ $message }}</small>
+                        @enderror
+                    </div>
+                    <div class=" mb-3">
+                        <label class="form-label">Jenis KPR</label>
+
+                        <select name="type" class="form-control">
+                            <option>--Pilih--</option>
+                            <option value="flat" @selected(request('type') === 'flat')>Flat</option>
+                            <option value="efektif" @selected(request('type') === 'efektif')>Efektif</option>
+                            <option value="anuitas" @selected(request('type') === 'anuitas')>Anuitas</option>
+                        </select>
+                        @error('')
+                            <small style="color: red">{{ $message }}</small>
+                        @enderror
+                    </div>
+                    <button type="submit" class="btn btn-primary">Hitung</button>
+                </form>
+            </div>
+
+            <div>
+                <div class="stripe-hitam mt-5"></div>
+                <h4 class="fw-bold mt-5" style="text-align: center">Hasil Simulasi KPR</h4>
+                @if (request()->has('pinjaman'))
+                    <h2>Hasil : </h2>
+                    @if (request()->type === 'flat')
+                        <b>Flat </b> <br>
+                        Jangka Waktu : {{ $rekapitulasi['flat']['jangkaWaktu'] }} Bulan. <br>
+                        Pinjaman : {{ $rekapitulasi['flat']['pinjaman'] }} <br>
+                        Bunga : {{ $rekapitulasi['flat']['totalBunga'] }} <br>
+                        Total Pinjaman : {{ $rekapitulasi['flat']['totalPinjaman'] }} <br>
+                        Cicilan per bulan : {{ $hasil }}
+
+                        <table class="table table-striped mt-5 table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Bulan</th>
+                                    <th>Pokok</th>
+                                    <th>Bunga</th>
+                                    <th>Angsuran</th>
+                                    <th>Sisa</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($rekapitulasi['flat']['data'] as $data)
+                                    <tr>
+                                        <td>Bulan ke-{{ $data['bulan'] }}</td>
+                                        <td>{{ number_format($data['pokok']) }}</td>
+                                        <td>{{ number_format($data['bunga']) }}</td>
+                                        <td>{{ number_format($data['cicilan']) }}</td>
+                                        <td>{{ number_format($data['sisa']) }}</td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    @endif
+
+                    @if (request()->type === 'efektif')
+                        <b>Efektif </b> <br>
+                        Jumlah Pinjaman : {{ number_format($rekapitulasi['efektif']['pinjaman']) }}<br>
+                        Waktu Tenor : {{ $rekapitulasi['efektif']['waktuTenor'] }} Bulan<br>
+                        Bunga Efektif : {{ number_format($rekapitulasi['efektif']['bungaEfektif']) }} % <br>
+
+
+                        <table class="table table-striped mt-5 table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Bulan</th>
+                                    <th>Pokok</th>
+                                    <th>Bunga</th>
+                                    <th>Angsuran</th>
+                                    <th>Sisa</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($rekapitulasi['efektif']['data'] as $data)
+                                    <tr>
+                                        <td>Bulan ke-{{ $data['bulan'] }}</td>
+                                        <td>{{ number_format($data['cicilanPokokPerbulan']) }}</td>
+                                        <td>{{ number_format($data['cicilanBunga']) }}</td>
+                                        <td>{{ number_format($data['cicilan']) }}</td>
+                                        <td>{{ number_format($data['sisa']) }}</td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    @endif
+
+                    @if (request()->type === 'anuitas')
+                        <b>Anuitas </b> <br>
+                        Jumlah Pinjaman : {{ number_format($rekapitulasi['anuitas']['pinjaman']) }}<br>
+                        Waktu Tenor : {{ $rekapitulasi['anuitas']['waktuTenor'] }} Bulan<br>
+
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Bulan</th>
+                                    <th>Pokok</th>
+                                    <th>Bunga</th>
+                                    <th>Angsuran</th>
+                                    <th>Sisa</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($rekapitulasi['anuitas']['data'] as $data)
+                                    <tr>
+                                        <td>Bulan ke-{{ $data['bulan'] }}</td>
+                                        <td>{{ number_format($data['pokok']) }}</td>
+                                        <td>{{ number_format($data['bunga']) }}</td>
+                                        <td>{{ number_format($data['pokokBunga']) }}</td>
+                                        <td>{{ $data['sisaPokok'] < 0 ? '0' : number_format($data['sisaPokok']) }}</td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    @endif
+                @endif
             </div>
         </div>
-    </div>
-    
-</section>
+
+    </section>
 @endsection

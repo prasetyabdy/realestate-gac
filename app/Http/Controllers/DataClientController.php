@@ -10,28 +10,31 @@ use Illuminate\Support\Facades\Validator;
 
 class DataClientController extends Controller
 {
-    public function index() {
+    public function index()
+    {
 
         $data = User::get();
 
         return view('admin.client.client', compact('data'));
     }
 
-    public function create() {
+    public function create()
+    {
         return view('admin.client.tambahclient');
     }
 
-    public function store(Request $request) {
+    public function store(Request $request)
+    {
 
         $validator = Validator::make($request->all(), [
-                'email' => 'required|email',
-                'nama' => 'required',
-                'password' => 'required',
-                'alamat' => 'required',
-                'telepon' => 'required'
+            'email' => 'required|email',
+            'nama' => 'required',
+            'password' => 'required',
+            'alamat' => 'required',
+            'telepon' => 'required'
         ]);
 
-        if($validator->fails()) return redirect()->back()->withInput()->withErrors($validator);
+        if ($validator->fails()) return redirect()->back()->withInput()->withErrors($validator);
 
         $data['email'] = $request->email;
         $data['name'] = $request->nama;
@@ -40,58 +43,63 @@ class DataClientController extends Controller
         $data['telepon'] = $request->telepon;
 
         User::create($data);
-        
+
         return redirect()->route('index');
     }
 
-    public function edit(Request $request,$id) {
+    public function edit(Request $request, $id)
+    {
         $data = User::find($id);
 
         return view('admin.client.editclient', compact('data'));
     }
 
-    public function update(Request $request,$id) {
-       
+    public function update(Request $request, $id)
+    {
+
         $validator = Validator::make($request->all(), [
             'email' => 'required|email',
             'nama' => 'required',
             'password' => 'nullable',
             'alamat' => 'required',
             'telepon' => 'required'
-    ]);
+        ]);
 
-    if($validator->fails()) return redirect()->back()->withInput()->withErrors($validator);
+        if ($validator->fails()) return redirect()->back()->withInput()->withErrors($validator);
 
-    $data['email'] = $request->email;
-    $data['name'] = $request->nama;
-    $data['alamat'] = $request->alamat;
-    $data['telepon'] = $request->telepon;
+        $data['email'] = $request->email;
+        $data['name'] = $request->nama;
+        $data['alamat'] = $request->alamat;
+        $data['telepon'] = $request->telepon;
 
-    if($request->password) {
-        $data['password'] = Hash::make($request->password);
+        if ($request->password) {
+            $data['password'] = Hash::make($request->password);
+        }
+
+
+        User::whereId($id)->update($data);
+
+        return redirect()->route('index');
     }
-    
-    
-    User::whereId($id)->update($data);
-    
-    return redirect()->route('index');
-    }
 
-    public function delete(Request $request,$id) {
+    public function delete(Request $request, $id)
+    {
         $data = User::find($id);
 
-        if($data) {
+        if ($data) {
             $data->delete();
         }
         return redirect()->route('index');
     }
 
     //interfaceUser
-    public function daftar() {
+    public function daftar()
+    {
         return view('auth.daftar');
     }
 
-    public function storeDaftar(Request $request) {
+    public function storeDaftar(Request $request)
+    {
 
         $validator = Validator::make($request->all(), [
             'email' => 'required|email',
@@ -99,18 +107,18 @@ class DataClientController extends Controller
             'password' => 'required',
             'alamat' => 'required',
             'telepon' => 'required'
-    ]);
+        ]);
 
-    if($validator->fails()) return redirect()->back()->withInput()->withErrors($validator);
+        if ($validator->fails()) return redirect()->back()->withInput()->withErrors($validator);
 
-    $data['email'] = $request->email;
-    $data['name'] = $request->nama;
-    $data['password'] = Hash::make($request->password);
-    $data['alamat'] = $request->alamat;
-    $data['telepon'] = $request->telepon;
+        $data['email'] = $request->email;
+        $data['name'] = $request->nama;
+        $data['password'] = Hash::make($request->password);
+        $data['alamat'] = $request->alamat;
+        $data['telepon'] = $request->telepon;
 
-    User::create($data);
-    
-    return redirect()->route('login');
+        User::create($data);
+
+        return redirect()->route('login')->with('success', 'Berhasil Daftar ! Silahkan Login 😁');
     }
 }

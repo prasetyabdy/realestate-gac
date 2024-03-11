@@ -24,6 +24,8 @@ Route::get('/', function () {
 });
 
 Route::get('/properti', [PropertiController::class, 'properti'])->name('properti');
+Route::get('/properti/{category}', [PropertiController::class, 'category'])->name('category');
+
 Route::get('/properti/detail/{id}', [PropertiController::class, 'detailProperti'])->name('properti.detail');
 
 

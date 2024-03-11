@@ -16,6 +16,7 @@ class UserSeeder extends Seeder
         $user = [
             'name' => 'Abdi',
             'email' => 'abdi@gmail.com',
+            'alamat' => 'bung',
             'password' => \bcrypt('abdi123')
         ];
 

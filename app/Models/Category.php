@@ -11,9 +11,12 @@ class Category extends Model
 
     protected $table = 'categories';
 
+    public function rumahRumah()
+    {
+        return $this->hasMany(Rumah::class);
+    }
+
     protected $fillable = [
         'nama'
     ];
-
-   
 }

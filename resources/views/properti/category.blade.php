@@ -6,11 +6,11 @@
         <div class="container py-5">
 
             <div class="header-berita text-center">
-                <h2 class="fw-bold">Properti Graha Cemerlang</h2>
+                <h2 class="fw-bold">Perumahan {{ $category->nama }}</h2>
             </div>
 
             <div class="row py-5">
-                @foreach ($data as $d)
+                @foreach ($category->rumahRumah as $d)
                     <div class="col-lg-4">
                         <div class="card border-0">
                             <img src="{{ asset('storage/foto-rumah/' . $d->foto) }}" class="img-fluid mb-3" alt="">
