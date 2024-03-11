@@ -1,0 +1,137 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,100&display=swap');
+
+body {
+    font-family: 'Poppins', sans-serif;
+    
+}
+
+/* Button */
+.btn-primary{
+    background-color: #1d7ce1;
+    border-radius: 10px;
+    border-color: #1d7ce1;
+    padding: 10px 45px;
+    color: white;
+}
+
+.btn-outline-primary{
+    background-color: transparent;
+    border-radius: 10px;
+    border-color: #1d7ce1;
+    padding: 10px 45px;
+    color: #1d7ce1;
+}
+
+.btn-outline-white{
+    background-color: transparent;
+    border-radius: 10px;
+    border-color: #ffffff;
+    padding: 10px 45px;
+    color: #ffffff;
+}
+
+
+/* Navbar */
+.nav-item .nav-link{
+    font-size: 18px;
+    margin-left: 5px;
+    margin-right: 5px;
+    
+}
+
+.scroll-nav-active {
+    background-color: white; 
+    box-shadow: 1px 1px 11px -1px rgba(0, 0, 0, 0.326);
+}
+
+.text-nav-active {
+    color: rgb(0, 0, 0);
+}
+
+/* Hero */
+#hero {
+    background-image: url("../../assets/images/img-bg-hero.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 800px;
+}
+
+.hero-title{
+    padding-top: 200px;
+}
+
+
+/* Responsive Layar 450 */
+@media screen and (min-width: 450px){
+    .hero-text{
+        font-size: 35px;
+        font-weight: 600;
+    }
+}
+
+/* Responsive Layar 550 */
+@media screen and (min-width: 550px){
+    .hero-text{
+        font-size: 35px;
+        font-weight: 600;
+    }
+}
+
+/* Responsive Layar 800 */
+@media screen and (min-width: 800px){
+    .hero-text{
+        font-size: 65px;
+        font-weight: 600;
+        
+    }
+}
+
+
+.stripe {
+    height: 5px;
+    width: 40px;
+    background-color: #1d7ce1;
+}
+
+/* Video */
+#video {
+    background-image: url("../../assets/images/bg-b.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 500px;
+    /* margin-top: 100px; */
+}
+
+/* Foto */
+/* Paralax Background */
+.section-foto {
+    background-attachment: fixed;
+    background-position: top;
+    background-size: cover;
+    height: 500px;
+    width: 100%;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.parallax {
+    background-image: url("../../assets/images/bg-parallax.jpg");
+}
+
+.stripe-putih {
+    height: 2px;
+    width: 100%;
+    background-color: #ffffff;
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+.stripe-hitam {
+    height: 4px;
+    width: 100%;
+    background-color: #00000027;
+}
