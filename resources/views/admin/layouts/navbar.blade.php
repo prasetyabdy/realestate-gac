@@ -20,7 +20,7 @@
     <!-- Brand Logo -->
     <a href="index3.html" class="brand-link">
         
-        <span class="brand-text font-weight-light ml-3">Admin Abdi</span>
+        <span class="brand-text ml-3">Admin</span>
     </a>
     
     <!-- Sidebar -->
@@ -58,7 +58,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a href="pages/widgets.html" class="nav-link">
+                        <a href="/pesanan-admin" class="nav-link {{ request()->is('pesanan-admin') ? "active" : ""}}">
                             <i class="nav-icon fas fa-table"></i>
                             <p>
                                 Data DP
@@ -67,7 +67,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a href="pages/widgets.html" class="nav-link">
+                        <a href="/booking-admin" class="nav-link {{ request()->is('booking-admin') ? "active" : ""}}">
                             <i class="nav-icon fas fa-table"></i>
                             <p>
                                 Data Booking
@@ -76,7 +76,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a href="pages/widgets.html" class="nav-link">
+                        <a href="/laporan" class="nav-link {{ request()->is('laporan') ? "active" : ""}}">
                             <i class="nav-icon fas fa-table"></i>
                             <p>
                                 Laporan

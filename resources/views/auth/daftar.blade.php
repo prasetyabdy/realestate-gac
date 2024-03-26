@@ -4,7 +4,7 @@
 
 <section style="margin-top: 100px">
     <div class="container py-5 col-xxl-6"> 
-        <h3 class="fw-bold mb-4 text-center">Halaman Daftar</h3>
+        <h3 class="fw-bold mb-4 text-center" style="color: #1d7ce1">Daftar</h3>
         
         <form action="{{ route('daftar.store') }}" method="POST">
             @csrf
@@ -47,10 +47,12 @@
                 <small style="color: red">{{ $message }}</small>
                 @enderror
             </div>
-            <div class="mb-3">
-                <a href="/login">Login</a>
-            </div>
+            
             <button type="submit" class="btn btn-primary">Daftar</button>
+
+            <div class="mt-3 text-center">
+                Silahkan <a href="/login">Login!</a> jika sudah daftar
+            </div>
         </form>
         
     </div>

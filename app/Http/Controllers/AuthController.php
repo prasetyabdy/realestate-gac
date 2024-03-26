@@ -21,7 +21,7 @@ class AuthController extends Controller
         
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect()->intended('/dashboard');
+            return redirect()->intended('/dashboard')->with('success','Login Berhaasil, Silahkan Melakukan Transaksi!');
         }
         return back()->with('loginError', 'Login Gagal, Priksa kembali Akun Anda!');
     }

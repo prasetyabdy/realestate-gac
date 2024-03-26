@@ -29,32 +29,29 @@
                 <div class="row">
                     {{-- Kolom 1 Navigasi --}}
                     <div class="col-12 col-md-3 mb-3">
-                        <h5 class="fw-bold mb-3">Navigasi</h5>
+                        <h5 class="fw-bold mb-3" style="color: #1d7ce1">Navigasi</h5>
                         <div class="d-flex">
                             <ul class="nav flex-column me-5">
-                                <li class="nav-item mb-2"><a href="" class="nav-link p-0 text-muted">Berita Realestate</a></li>
+                                <li class="nav-item mb-2"><a href="" class="nav-link p-0 text-muted">Beranda</a></li>
                                 
-                                <li class="nav-item mb-2"><a href="" class="nav-link p-0 text-muted">Kegiatan Realestate</a></li>
+                                <li class="nav-item mb-2"><a href="" class="nav-link p-0 text-muted">Perumahan</a></li>
+
+                                <li class="nav-item mb-2"><a href="" class="nav-link p-0 text-muted">Service</a></li>
+
+                                <li class="nav-item mb-2"><a href="" class="nav-link p-0 text-muted">Gallery</a></li>
                                 
-                                <li class="nav-item mb-2"><a href="" class="nav-link p-0 text-muted">Gallery Realestate</a></li>
+                                <li class="nav-item mb-2"><a href="" class="nav-link p-0 text-muted">Tentang PT GAC</a></li>
                                 
-                                <li class="nav-item mb-2"><a href="" class="nav-link p-0 text-muted">Kegiatan SRealestate</a></li>
                             </ul>
                             <ul class="nav flex-column">
-                                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Alumni</a></li>
                                 
-                                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Info PSB</a></li>
-                                
-                                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Prestasi</a></li>
-                                
-                                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Video Kegiatan</a></li>
                             </ul>
                         </div>
                     </div>
                     
                     {{-- Kolom 2 Sosial Media --}}
                     <div class="col-12 col-md-3 mb-3">
-                        <h5 class="fw-bold mb-3">Follow kami</h5>
+                        <h5 class="fw-bold mb-3" style="color: #1d7ce1">Follow kami</h5>
                         <div class="d-flex mb-3">
                             <a href="" target="_blank" class="text-decoration-none text-dark">
                                 <img src="{{ asset('assets/icons/ig.png') }}" height="30" width="30" class="me-4" alt="">
@@ -73,22 +70,18 @@
                     
                     {{-- Kolom 3 Kontak --}}
                     <div class="col-12 col-md-3 mb-3">
-                        <h5 class="font-inter fw-bold mb-3">Kontak kami</h5>
+                        <h5 class="font-inter fw-bold mb-3" style="color: #1d7ce1">Kontak kami</h5>
                         <ul class="nav flex-column">
-                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">info@grahacemerlang.sch.id</a></li>
+                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">grahacemerlang@gmail.com</a></li>
                             
-                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">021-xxx-xxx</a></li>
+                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">0411-556888</a></li>
                             
-                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">021-xxx-xxx</a></li>
-                            
-                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">021-xxx-xxx</a></li>
-                        </ul>
                     </div>
                     
                     {{-- Kolom 4 Alamat --}}
                     <div class="col-12 col-md-3 mb-3">
-                        <h5 class="font-inter fw-bold mb-3">Alamat Perusahaan</h5>
-                        <p>Jl. Poros Maros, No 115, Maros, Sulawesi Selatan.</p>
+                        <h5 class="font-inter fw-bold mb-3" style="color: #1d7ce1">Alamat Perusahaan</h5>
+                        <p>Jl. Graha Boulevard, Hasanuddin, Kec. Mandai, Kabupaten Maros, Sulawesi Selatan 90552</p>
                     </div>
                 </div>
             </footer>

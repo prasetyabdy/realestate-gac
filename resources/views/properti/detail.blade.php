@@ -3,20 +3,19 @@
 @section('content')
     <section id="detail" style="margin-top:100px" class="py-5">
         <div class="container col-xxl-8">
-            <div class="mb-3">
-                Home / Properti / Nama Rumah
-            </div>
-            <img src="{{ asset('storage/foto-rumah/' . $house->foto) }}" class="img-fluid mb-3" alt="">
+            
+            <img src="{{ asset('storage/foto-rumah/' . $rumah->foto) }}" class="img-fluid mb-3" alt="">
             <div class="konten-properti">
-                <h4 class="fw-bold mb-3">{{ $house->namarumah }}</h4>
-                <p class="mb-3 text-secondary">Tipe Rumah :{{ $house->tiperumah }} | Harga {{ $house->hargarumah }}</p>
-
-                <p>{!! $house->deskripsirumah !!}</p>
-                {!! $house->alamatrumah !!}
+                <h4 class="fw-bold mb-3">{{ $rumah->namarumah }}</h4>
+                <p class="mb-3 text-secondary">Tipe Rumah : {{ $rumah->tiperumah }} | Harga : Rp. {{ number_format($rumah->hargarumah)   }}</p>
+                <h5 class="fw-bold mt-5">Deskripsi : </h5>
+                <p>{!! $rumah->deskripsirumah !!}</p>
+                <h5 class="fw-bold mt-5">Alamat : </h5>
+                {!! $rumah->alamatrumah !!}
 
             </div>
-            <button class="btn btn-primary"> Pesan Sekarang</button>
-            <button class="btn btn-primary">Booking</button>
+            <a href="{{ route('pesanan', $rumah->id) }}" class="btn btn-primary mt-3">Pesan Sekarang</a>
+            <button class="btn btn-primary mt-3">Booking</button>
 
             <div>
                 <div class="stripe-hitam mt-5"></div>
@@ -75,11 +74,11 @@
                     <h2>Hasil : </h2>
                     @if (request()->type === 'flat')
                         <b>Flat </b> <br>
-                        Jangka Waktu : {{ $rekapitulasi['flat']['jangkaWaktu'] }} Bulan. <br>
-                        Pinjaman : {{ $rekapitulasi['flat']['pinjaman'] }} <br>
-                        Bunga : {{ $rekapitulasi['flat']['totalBunga'] }} <br>
-                        Total Pinjaman : {{ $rekapitulasi['flat']['totalPinjaman'] }} <br>
-                        Cicilan per bulan : {{ $hasil }}
+                        Jangka Waktu : {{ $rekapitulasi['flat']['jangkaWaktu'] }} Bulan <br>
+                        Pinjaman : Rp.{{ number_format($rekapitulasi['flat']['pinjaman']) }} <br>
+                        Bunga : Rp.{{ number_format($rekapitulasi['flat']['totalBunga']) }} <br>
+                        Total Pinjaman : Rp. {{number_format($rekapitulasi['flat']['totalPinjaman']) }} <br>
+                        Cicilan per bulan : Rp.{{ number_format($hasil) }}
 
                         <table class="table table-striped mt-5 table-bordered">
                             <thead>
@@ -107,9 +106,9 @@
 
                     @if (request()->type === 'efektif')
                         <b>Efektif </b> <br>
-                        Jumlah Pinjaman : {{ number_format($rekapitulasi['efektif']['pinjaman']) }}<br>
+                        Jumlah Pinjaman : Rp. {{ number_format($rekapitulasi['efektif']['pinjaman']) }}<br>
                         Waktu Tenor : {{ $rekapitulasi['efektif']['waktuTenor'] }} Bulan<br>
-                        Bunga Efektif : {{ number_format($rekapitulasi['efektif']['bungaEfektif']) }} % <br>
+                        Bunga Efektif : Rp. {{ number_format($rekapitulasi['efektif']['bungaEfektif']) }} % <br>
 
 
                         <table class="table table-striped mt-5 table-bordered">
@@ -138,7 +137,7 @@
 
                     @if (request()->type === 'anuitas')
                         <b>Anuitas </b> <br>
-                        Jumlah Pinjaman : {{ number_format($rekapitulasi['anuitas']['pinjaman']) }}<br>
+                        Jumlah Pinjaman : Rp.{{ number_format($rekapitulasi['anuitas']['pinjaman']) }}<br>
                         Waktu Tenor : {{ $rekapitulasi['anuitas']['waktuTenor'] }} Bulan<br>
 
                         <table class="table table-bordered">

@@ -33,12 +33,20 @@ class PropertiController extends Controller
     {
 
         $validator = Validator::make($request->all(), [
-            'nama' => 'required'
+            'nama' => 'required',
+            'foto' => 'nullable|mimes:png,jpg,jpeg|max:3048'
         ]);
 
         if ($validator->fails()) return redirect()->back()->withInput()->withErrors($validator);
 
+        $foto = $request->file('foto');
+        $filename = date('Y-m-d') . $foto->getClientOriginalName();
+        $path = 'foto-perumahan/' . $filename;
+
+        Storage::disk('public')->put($path, file_get_contents($foto));
+
         $data['nama'] = $request->nama;
+        $data['foto'] = $filename;
 
         Category::create($data);
 
@@ -56,14 +64,33 @@ class PropertiController extends Controller
     {
 
         $validator = Validator::make($request->all(), [
-            'nama' => 'required'
+            'nama' => 'required',
+            'foto' => 'nullable|mimes:png,jpg,jpeg|max:3048'
         ]);
 
         if ($validator->fails()) return redirect()->back()->withInput()->withErrors($validator);
 
-        $data['nama'] = $request->nama;
+        $find = Category::find($id);
 
-        Category::whereId($id)->update($data);
+        $data['nama'] = $request->nama;
+        
+        $foto = $request->file('foto');
+
+        if ($foto) {
+
+            $filename = date('Y-m-d') . $foto->getClientOriginalName();
+            $path = 'foto-perumahan/' . $filename;
+
+            if ($find->foto) {
+                Storage::disk('public')->delete('foto-perumahan/' . $find->foto);
+            }
+            Storage::disk('public')->put($path, file_get_contents($foto));
+
+            $data['foto'] = $filename;
+        }
+        
+
+        $find->update($data);
 
         return redirect()->route('perumahan');
     }
@@ -78,7 +105,9 @@ class PropertiController extends Controller
         return redirect()->route('perumahan');
     }
 
-
+//---------------------------------------------------------------------------------------------------------------------------------//
+    
+    
     //RUMAAH
     public function rumah()
     {
@@ -101,10 +130,13 @@ class PropertiController extends Controller
             'namarumah' => 'required',
             'category_id' => 'required',
             'tiperumah' => 'required',
+            'kamartidur' => 'required',
+            'kamarmandi' => 'required',
+            'garasi' => 'required',
             'hargarumah' => 'required',
             'alamatrumah' => 'required',
             'deskripsirumah' => 'required',
-            'foto' => 'required|mimes:png,jpg,jpeg|max:2048',
+            'foto' => 'nullable|mimes:png,jpg,jpeg|max:3048',
             'status' => 'required'
         ]);
 
@@ -119,6 +151,9 @@ class PropertiController extends Controller
         $data['namarumah'] = $request->namarumah;
         $data['category_id'] = $request->category_id;
         $data['tiperumah'] = $request->tiperumah;
+        $data['kamartidur'] = $request->kamartidur;
+        $data['kamarmandi'] = $request->kamarmandi;
+        $data['garasi'] = $request->garasi;
         $data['hargarumah'] = $request->hargarumah;
         $data['alamatrumah'] = $request->alamatrumah;
         $data['deskripsirumah'] = $request->deskripsirumah;
@@ -131,16 +166,30 @@ class PropertiController extends Controller
         return redirect()->route('rumah');
     }
 
-    //Tampilan User
-    public function properti()
-    {
-        $data = Rumah::all();
-        return view('properti.properti', compact('data'));
+    public function editRumah(Request $request,$id) {
+
+        $data = Rumah::find($id);
+        return view('admin.rumah.rumahedit', compact('data'));
+
     }
 
+    public function deleteRumah(Request $request, $id)
+    {
+        $data = Rumah::find($id);
+
+        if ($data) {
+            $data->delete();
+        }
+        return redirect()->route('rumah');
+    }
+
+    //---------------------------------------------------------------------------------------------------------------------------------//
+    
+    
+    //Tampilan User
     public function detailProperti(Request $request, $id)
     {
-        $house = Rumah::find($id);
+        $rumah = Rumah::find($id);
         $hasil = 0;
         $pinjaman = 0;
         $bunga = 0;
@@ -288,6 +337,6 @@ class PropertiController extends Controller
         }
 
 
-        return view('properti.detail', compact('house', 'hasil', 'rekapitulasi'));
+        return view('properti.detail', compact('rumah', 'hasil', 'rekapitulasi'));
     }
 }

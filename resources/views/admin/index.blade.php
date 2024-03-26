@@ -30,12 +30,12 @@
                     <!-- small box -->
                     <div class="small-box bg-info">
                         <div class="inner">
-                            <h3>150</h3>
+                            <h3>100+</h3>
                             
-                            <p>New Orders</p>
+                            <p>Unit</p>
                         </div>
                         <div class="icon">
-                            <i class="ion ion-bag"></i>
+                            <i class="ion ion-home"></i>
                         </div>
                         <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
@@ -45,9 +45,9 @@
                     <!-- small box -->
                     <div class="small-box bg-success">
                         <div class="inner">
-                            <h3>53<sup style="font-size: 20px">%</sup></h3>
+                            <h3>20+<sup style="font-size: 20px"></sup></h3>
                             
-                            <p>Bounce Rate</p>
+                            <p>Transaksi</p>
                         </div>
                         <div class="icon">
                             <i class="ion ion-stats-bars"></i>
@@ -60,9 +60,9 @@
                     <!-- small box -->
                     <div class="small-box bg-warning">
                         <div class="inner">
-                            <h3>44</h3>
+                            <h3>--</h3>
                             
-                            <p>User Registrations</p>
+                            <p>Pengguna</p>
                         </div>
                         <div class="icon">
                             <i class="ion ion-person-add"></i>
@@ -75,9 +75,9 @@
                     <!-- small box -->
                     <div class="small-box bg-danger">
                         <div class="inner">
-                            <h3>65</h3>
+                            <h3>--</h3>
                             
-                            <p>Unique Visitors</p>
+                            <p>--</p>
                         </div>
                         <div class="icon">
                             <i class="ion ion-pie-graph"></i>
@@ -89,6 +89,22 @@
             </div>
             <!-- /.row -->
             <!-- Main row -->
+           
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="text-center"></h5>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                        <h3 class="text-center">Selamat Datang <b>Admin</b></h3>
+                        <p class="text-center">Selamat Datang di aplikasi website admin PT Graha Cemerlang, Kabupaten Maros, Sulawesi Selatan.
+                            <br> Website ini dirancang untuk memudahkan memanege dan mendigitalisasi unit-unit properti <br>serta memudahkan ketika ingin mengakses
+                            data-datanya
+                        </p>
+                        <h5 class="text-center">Selamat Menggunakan Fasilitas ini</h5>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
             
         <!-- /.row (main row) -->
     </div><!-- /.container-fluid -->

@@ -23,7 +23,7 @@
                         
                         <!-- /.card-header -->
                         <div class="card-body">
-                            <form action="{{ route('perumahan.store') }}" method="POST">
+                            <form action="{{ route('perumahan.store') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="row">
                                     <div class="col">
@@ -32,6 +32,13 @@
                                             <label>Nama Perumahan</label>
                                             <input type="text" name="nama" class="form-control" placeholder="Nama ...">
                                             @error('nama')
+                                                <small style="color: red">{{ $message }}</small>
+                                            @enderror
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Foto Perumahan</label>
+                                            <input type="file" name="foto" class="form-control" placeholder="Nama ...">
+                                            @error('foto')
                                                 <small style="color: red">{{ $message }}</small>
                                             @enderror
                                         </div>

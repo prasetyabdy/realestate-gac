@@ -17,6 +17,7 @@ class Category extends Model
     }
 
     protected $fillable = [
-        'nama'
+        'nama',
+        'foto'
     ];
 }

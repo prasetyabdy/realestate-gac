@@ -23,6 +23,9 @@ return new class extends Migration
             $table->enum('jenis_pembayaran', ['Cash', 'Cash Bertahap', 'KPR']);
             $table->timestamp('janji_temu');
             $table->string('bukti_pembayaran')->nullable();
+            $table->timestamp('tanggal_pembayaran')->nullable();
+            $table->string('jml_pembayaran')->nullable();
+            $table->boolean('status')->default('0');
             $table->timestamps();
         });
     }

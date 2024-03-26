@@ -96,7 +96,7 @@ body {
 
 /* Video */
 #video {
-    background-image: url("../../assets/images/bg-b.jpg");
+    /* s */
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;

@@ -29,6 +29,7 @@
                                     <tr>
                                         <th>No</th>
                                         <th>Nama Perumahan</th>
+                                        <th>Foto</th>
                                         <th>Aksi</th> 
                                     </tr>
                                 </thead>
@@ -37,6 +38,7 @@
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $d->nama }}</td>
+                                        <td><img src="{{ asset('storage/foto-perumahan/'.$d->foto) }}" alt="" width="100"></td>
                                         <td>
                                             <a href="{{ route('perumahan.edit',['id' => $d->id]) }}" class="btn btn-primary"><i class="fas fa-pen"></i>Edit</a>
                                             <a data-toggle="modal" data-target="#modal-hapus{{ $d->id }}" class="btn btn-danger"><i class="fas fa-trash-alt"></i>Hapus</a>
@@ -76,6 +78,7 @@
                                     <tr>
                                         <th>No</th>
                                         <th>Nama Perumahan</th>
+                                        <th>Foto</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </tfoot>

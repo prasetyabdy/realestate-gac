@@ -18,6 +18,9 @@ return new class extends Migration
             $table->string('namarumah');
             $table->foreignIdFor(Category::class);
             $table->string('tiperumah');
+            $table->string('kamartidur');
+            $table->string('kamarmandi');
+            $table->string('garasi');
             $table->bigInteger('hargarumah');
             $table->text('alamatrumah');
             $table->text('deskripsirumah');

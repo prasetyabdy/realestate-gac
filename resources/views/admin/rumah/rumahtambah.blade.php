@@ -60,6 +60,30 @@
                                             <small style="color: red">{{ $message }}</small>
                                             @enderror
                                         </div>
+
+                                        <div class="form-group">
+                                            <label>Kamar Tidur</label>
+                                            <input type="text" name="kamartidur" class="form-control" placeholder="Enter ...">
+                                            @error('kamartidur')
+                                            <small style="color: red">{{ $message }}</small>
+                                            @enderror
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Kamar Mandi</label>
+                                            <input type="text" name="kamarmandi" class="form-control" placeholder="Enter ...">
+                                            @error('kamarmandi')
+                                            <small style="color: red">{{ $message }}</small>
+                                            @enderror
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Garasi</label>
+                                            <input type="text" name="garasi" class="form-control" placeholder="Enter ...">
+                                            @error('garasi')
+                                            <small style="color: red">{{ $message }}</small>
+                                            @enderror
+                                        </div>
                                         
                                         <div class="form-group">
                                             <label>Harga Rumah</label>
